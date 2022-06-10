@@ -12,7 +12,7 @@
 
   - **heroku** 環境へのデプロイサンプル
 
-  - GitHub リポジトリに `HEROKU_API_KEY` という名前で API KEY を、`HEROKU_EMAIL" という名前で heroku のメールアドレスをそれぞれシークレット登録する必要あり
+  - GitHub リポジトリに `HEROKU_API_KEY` という名前で API KEY を、`HEROKU_EMAIL` という名前で heroku のメールアドレスをそれぞれシークレット登録する必要あり
 
     - API KEY の取得は [こちら](https://dashboard.heroku.com/account) から
 
@@ -22,6 +22,14 @@
   - **dokku** 環境へのデプロイサンプル
 
   - GitHub リポジトリに `SSH_PRIVATE_KEY` という名前で秘密鍵をシークレット登録する必要あり
+
+  - http:80 を使う場合は、以下のコマンドをあらかじめ dokku 側で実行しておく必要あり
+
+    - `$ dokku proxy:ports-add cicd-gha http:80:8080`
+
+  - https:443 を使う場合は、以下のコマンドをあらかじめ dokku 側で実行しておく必要あり
+
+    - `$ dokku letsencrypt:enable cicd-gha`
 
 
 ## Licensing
