@@ -6,6 +6,19 @@
 [GitHub Actions](https://docs.github.com/ja/actions/learn-github-actions) を用いた CI/CD サンプル
 
 
+## How to use sample application
+
+- アプリケーション起動後に（必要であれば message パラメータを指定して）以下にアクセスします:
+
+  -  `http://xxxxxxxxxx:8080/(?message=メッセージ)`
+
+  - パラメータ: message(default = 'Hello World')
+
+- 以下のような結果が表示されます:
+
+  - `{ "status": true, message: "Hello World" }`
+
+
 ## Samples
 
 - `.github/workflows/deploy_to_heroku.yml`
@@ -13,6 +26,8 @@
   - **heroku** 環境へのデプロイサンプル
 
   - GitHub リポジトリに `HEROKU_API_KEY` という名前で API KEY を、`HEROKU_EMAIL` という名前で heroku のメールアドレスをそれぞれシークレット登録する必要あり
+
+  - `heroku_app_name` に heroku 上のアプリケーション名を指定する（または変数化してシークレットに指定する）
 
     - API KEY の取得は [こちら](https://dashboard.heroku.com/account) から
 

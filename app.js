@@ -4,7 +4,13 @@ var express = require( 'express' ),
 
 app.get( '/', function( req, res ){
   res.contentType( 'application/json; charset=utf-8' );
-  res.write( JSON.stringify( { status: true }, null, 2 ) );
+
+  var message = 'Hello World!';
+  if( req.query.message ){
+    message = req.query.message;
+  }
+
+  res.write( JSON.stringify( { status: true, message: message }, null, 2 ) );
   res.end();
 });
 
