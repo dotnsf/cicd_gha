@@ -38,13 +38,21 @@
 
   - GitHub リポジトリに `SSH_PRIVATE_KEY` という名前で秘密鍵をシークレット登録する必要あり
 
-  - http:80 を使う場合は、以下のコマンドをあらかじめ dokku 側で実行しておく必要あり
+  - **重要** アプリケーションプロジェクトに **Dockerfile** と **.dockerignore** が必要
 
-    - `$ dokku proxy:ports-add cicd-gha http:80:8080`
+  - **重要** 一度手作業でアプリを **事前に** デプロイしておく必要あり
 
-  - https:443 を使う場合は、以下のコマンドをあらかじめ dokku 側で実行しておく必要あり
+    - `$ dokku apps:create cicd-gha`
 
-    - `$ dokku letsencrypt:enable cicd-gha`
+    - http:80 を使う場合は、以下のコマンドを dokku 側で実行しておく必要あり
+
+      - `$ dokku proxy:ports-add cicd-gha http:80:8080`
+
+    - https:443 を使う場合は、以下のコマンドを dokku 側で実行しておく必要あり
+
+      - `$ dokku letsencrypt:enable cicd-gha`
+
+  - 手作業によるデプロイ後に `$ git push` で CICD を動かす
 
 
 ## Licensing
